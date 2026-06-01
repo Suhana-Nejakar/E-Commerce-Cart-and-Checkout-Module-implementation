@@ -1,0 +1,58 @@
+{
+  "info": {
+    "name": "E-Commerce Cart Checkout APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add Product To Cart",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "url": {"raw":"http://localhost:8080/api/cart/items","protocol":"http","host":["localhost"],"port":"8080","path":["api","cart","items"]},
+        "body": {"mode":"raw","raw":"{\n  \"userId\": 1,\n  \"productId\": 1,\n  \"quantity\": 2\n}"}
+      }
+    },
+    {
+      "name": "View Cart",
+      "request": {
+        "method": "GET",
+        "url": {"raw":"http://localhost:8080/api/cart/1","protocol":"http","host":["localhost"],"port":"8080","path":["api","cart","1"]}
+      }
+    },
+    {
+      "name": "Update Cart Item",
+      "request": {
+        "method": "PUT",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "url": {"raw":"http://localhost:8080/api/cart/1/items/1","protocol":"http","host":["localhost"],"port":"8080","path":["api","cart","1","items","1"]},
+        "body": {"mode":"raw","raw":"{\n  \"quantity\": 3\n}"}
+      }
+    },
+    {
+      "name": "Checkout Success",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "url": {"raw":"http://localhost:8080/api/checkout","protocol":"http","host":["localhost"],"port":"8080","path":["api","checkout"]},
+        "body": {"mode":"raw","raw":"{\n  \"userId\": 1,\n  \"couponCode\": \"SAVE10\",\n  \"paymentSuccess\": true\n}"}
+      }
+    },
+    {
+      "name": "Checkout Failed Payment",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "url": {"raw":"http://localhost:8080/api/checkout","protocol":"http","host":["localhost"],"port":"8080","path":["api","checkout"]},
+        "body": {"mode":"raw","raw":"{\n  \"userId\": 1,\n  \"couponCode\": \"SAVE10\",\n  \"paymentSuccess\": false\n}"}
+      }
+    },
+    {
+      "name": "Order History",
+      "request": {
+        "method": "GET",
+        "url": {"raw":"http://localhost:8080/api/orders/user/1?page=0&size=10","protocol":"http","host":["localhost"],"port":"8080","path":["api","orders","user","1"],"query":[{"key":"page","value":"0"},{"key":"size","value":"10"}]}
+      }
+    }
+  ]
+}
