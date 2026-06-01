@@ -20,8 +20,7 @@ public class CartController {
 
     @PostMapping("/items")
     public ResponseEntity<CartResponse> addItem(
-            @Valid @RequestBody AddCartItemRequest request
-    ) {
+            @Valid @RequestBody AddCartItemRequest request) {
         return ResponseEntity.ok(cartService.addItem(request));
     }
 
@@ -29,32 +28,29 @@ public class CartController {
     public ResponseEntity<CartResponse> updateItem(
             @PathVariable Long userId,
             @PathVariable Long productId,
-            @Valid @RequestBody UpdateCartItemRequest request
-    ) {
+            @Valid @RequestBody UpdateCartItemRequest request) {
         return ResponseEntity.ok(cartService.updateItem(userId, productId, request));
     }
 
     @DeleteMapping("/{userId}/items/{productId}")
     public ResponseEntity<Void> removeItem(
             @PathVariable Long userId,
-            @PathVariable Long productId
-    ) {
+            @PathVariable Long productId) {
         cartService.removeItem(userId, productId);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{userId}")
     public ResponseEntity<CartResponse> viewCart(
-            @PathVariable Long userId
-    ) {
+            @PathVariable Long userId) {
         return ResponseEntity.ok(cartService.viewCart(userId));
     }
 
     @PostMapping("/{userId}/coupon")
     public ResponseEntity<CartResponse> applyCoupon(
             @PathVariable Long userId,
-            @RequestParam String code
-    ) {
+            @RequestParam String code) {
         return ResponseEntity.ok(cartService.applyCoupon(userId, code));
     }
 }
+// vjnf
